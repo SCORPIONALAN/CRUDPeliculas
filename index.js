@@ -11,12 +11,7 @@ app.get("/", (req, res)=>{
     res.status(200).json({mensaje: "hola mundo"})
 })
 
-app.use(cors(
-    {
-        origin:"http://127.0.0.1:5500",
-        credentials: true
-    }
-))
+app.use(cors())
 // Ruta: Obtener todas las películas
 app.get('/api/peliculas', async (req, res) => {
   try {
