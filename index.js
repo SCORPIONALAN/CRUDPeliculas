@@ -1,6 +1,6 @@
 import express from "express";
 import conectarAlaDbAsync, { obtenerTodos, obtenerPorId, agregar } from "./db/conexionDB.js";
-
+import cors from "cors";
 const app = express();
 const PORT = 3001;
 
@@ -10,6 +10,13 @@ app.use(express.json());
 app.get("/", (req, res)=>{
     res.status(200).json({mensaje: "hola mundo"})
 })
+
+app.use(cors(
+    {
+        origin:"http://127.0.0.1:5500/index.html",
+        credentials: true
+    }
+))
 // Ruta: Obtener todas las películas
 app.get('/api/peliculas', async (req, res) => {
   try {
