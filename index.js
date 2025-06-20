@@ -4,6 +4,8 @@ import cors from "cors";
 const app = express();
 const PORT = 3001;
 
+app.use(cors());
+
 // Middleware para parsear body
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -11,20 +13,7 @@ app.get("/", (req, res)=>{
     res.status(200).json({mensaje: "hola mundo"})
 })
 
-const whitelist = [
-  "http://127.0.0.1:5500",
-  "http://localhost:5500"
-];
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || whitelist.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("No permitido por CORS"));
-    }
-  }
-}));
 
 // Ruta: Obtener todas las películas
 app.get('/api/peliculas', async (req, res) => {
