@@ -11,8 +11,6 @@ app.get("/", (req, res)=>{
     res.status(200).json({mensaje: "hola mundo"})
 })
 
-import cors from "cors";
-
 const whitelist = [
   "http://127.0.0.1:5500",
   "http://localhost:5500"
